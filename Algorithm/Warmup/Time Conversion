@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static String timeConversion(String s) {
+        // Complete this function
+        String st = s.substring(8);
+        if(st.equals("AM")){
+            
+            int sum = (s.charAt(0) - '0')*10 ;
+            sum += s.charAt(1) - '0';
+            if(sum != 12){
+                st = s.substring(0,8);}
+            else {
+                st = "00"+s.substring(2,8);
+            }
+        } else {
+            int sum = (s.charAt(0) - '0')*10 ;
+            sum += s.charAt(1) - '0';
+            if(sum < 12)
+            {sum += 12;}
+            if(sum > 9){
+                st = sum + s.substring(2,8);}
+            else{
+                st = 0+""+sum + s.substring(2,8);
+            }
+        }
+        return st;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        String result = timeConversion(s);
+        System.out.println(result);
+    }
+}
+
